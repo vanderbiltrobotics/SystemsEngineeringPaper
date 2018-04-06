@@ -1,0 +1,93 @@
+%\documentclass{article}}
+%
+%\begin{document}
+\documentclass[class=article, crop=false]{standalone}
+\usepackage{00_Preamble/frr_preamble}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{graphics}
+\usepackage{adjustbox}
+\usepackage{placeins}
+
+\begin{document}
+		\subsubsection{Personnel Hazard Analysis}
+		\label{subsubsec:personnel_hazard_analysis}
+			Personnel safety is of utmost importance in all construction, testing, and launch operations. Use of any equipment or chemicals requires a thorough understanding of the safety protocol and mitigation strategies for preventing and reducing the consequences of a potential failure.
+			\begin{footnotesize}	
+		\begin{longtable}{|L{0.12\linewidth}|L{0.12\linewidth}|L{0.11\linewidth}|C{0.05\linewidth} |L{0.22\linewidth}|L{0.16\linewidth}|C{0.10\linewidth}|}
+		
+			\caption{Personnel Hazard Risk Assessment}			\label{table:personnel_hazard_risk_assessment}\\ 
+			\hline
+			\rowcolor[rgb]{ 1,  1,  1} \textbf{Risk} & \textbf{Cause} & \textbf{Effect} & \textbf{RR} & \textbf{Mitigation Strategy} & \textbf{Verification of Mitigation} & \textbf{PMRR} \\ \hline
+			\endfirsthead
+			
+			\caption*{Personnel Hazard Risk Assessment}\\ 
+			\hline	
+			\rowcolor[rgb]{ 1,  1,  1} \textbf{Risk} & \textbf{Cause} & \textbf{Effect} &  \textbf{RR} & \textbf{Mitigation Strategy} & \textbf{Verification of Mitigation} & \textbf{PMRR} \\ 
+			\hline
+			\endhead
+			
+			\rowcolor[rgb]{ 1,  1,  1} \multicolumn{7}{|c|}{\textcolor[rgb]{ 0, 0, 0}{\textbf{Shop Safety}}} \\ \hline
+			Electric shock & Static build-up on equipment handler & Destruction of electrical components; black powder explosion & \cellcolor[rgb]{ 1,  0,  0} E3 & Handlers of sensitive equipment will ground themselves to discharge static build-up. Furthermore, all high voltage components will be properly marked as \textcolor{red}{``HIGH VOLTAGE"} and locked while in use. & Consultation of shop safety guidelines
+			& \cellcolor[rgb]{ 1,  1,  0} E1 \\
+			\hline
+			Lacerations or cuts from machines and tools & Improper use of machines/ equipment & Injury potentially requiring medical attention & \cellcolor[rgb]{ 1,  0,  0} E3 & All team members performing potentially hazardous operations will be properly trained. At least two members must be present for hazardous operations. & Consultation of safety protocol flowchart
+			& \cellcolor[rgb]{ 1,  1,  0} D2 \\
+			\hline
+			Black powder explosion/ ignition while handling & Accidental connection to voltage source; Static discharge & Hearing damage; Disorientation; Personal injury & \cellcolor[rgb]{ 1,  0,  0} E3 & Black powder handlers will only work with small amounts at a time and ground themselves prior. & Consultation of SDS
+			& \cellcolor[rgb]{ 1,  1,  0} E1 \\
+			\hline
+			Getting caught in a machine & Loose fitting clothing or jewelry; long hair not tied back & Potential for serious injury or death & \cellcolor[rgb]{ 1,  0,  0} E3 & Those performing machining operations will never wear loose fitting clothing or jewelry. All long hair must be tied back. & Consultation of shop safety guidelines and safety protocol flowsheet & \cellcolor[rgb]{ 1,  1,  0} E1 \\
+			\hline
+			Eye contact with chemicals or particulates; exposure to arc from arc-weld & Improper handling of chemicals & Discomfort and/or vision impairment & \cellcolor[rgb]{ 1,  1,  0} D3 & Appropriate eye protection will be worn for all activities involving machinery, chemicals, and welding. & Consultation of SDS, PPE: eye protection & \cellcolor[rgb]{ .6,  .8,  0} D1 \\
+			\hline
+			Prolonged exposure to loud machinery & Prolonged operation of heavy machinery & Disorientation and/or hearing loss & \cellcolor[rgb]{ 1,  1,  0} D3 & Hearing protection will be worn when operating heavy machinery. & PPE: hearing protection & \cellcolor[rgb]{ .6,  .8,  0} D1 \\
+			\hline
+			Physical contact with hot surfaces & Leaving soldering iron on; touching welded parts immediately after welding & Burns & \cellcolor[rgb]{ 1,  1,  0} D3 & All heat-producing tools will be turned off when not in use. Heat-resistant gloves will be worn when handling hot parts. Chemicals will be stored and handled safely. & Consultation of shop safety guidelines
+			& \cellcolor[rgb]{ 1,  1,  0} D2 \\
+			\hline
+			Inhalation of chemical fumes or carbon fiber particulates & Improper handling of chemicals & Discomfort and/or damage to lungs & \cellcolor[rgb]{ 1,  1,  0} D3 & Volatile chemicals will only be handled in well-ventilated rooms and under a fume-hood when possible. A respirator will be worn when cutting, drilling, and sanding carbon fiber. & Consultation of SDS before use; PPE: eye protection, respirator & \cellcolor[rgb]{ .6,  .8,  0} D1 \\
+			\hline
+			Contact with flying debris from machining operations & Standard or improper tool use & Burns, abrasions, irritation of eyes or skin & \cellcolor[rgb]{ 1,  1,  0} C3 & Closed-toed shoes and long pants will be worn at all times in the shop. All members present during cutting operations will wear eye protection. & PPE: clothes that cover the body, eye protection & \cellcolor[rgb]{ 1,  1,  0} C2 \\
+			\hline
+			Contact with falling tools/parts & Improper storage of tools/parts & Personal injury & \cellcolor[rgb]{ 1,  1,  0} C3 & All team members will wear closed-toed footwear and long pants while machining in the shop. & Consultation of shop safety guidelines involving cleanup; PPE: clothes that cover the body & \cellcolor[rgb]{ 1,  1,  0} C2 \\
+			\hline
+			Tripping over loose cords & Long power cords/wires being run across the shop floor & Personal injury & \cellcolor[rgb]{ 1,  1,  0} C3 & Power strips have been installed near all machines/workspaces that may require a power outlet. & Consultation of shop safety guidelines
+			& \cellcolor[rgb]{ .6,  .8,  0} C1 \\
+			\hline
+			Exposure to chemicals/allergens & Improper handling of chemicals and known allergens & Chemical burns, irritation of skin, allergic reaction & \cellcolor[rgb]{ 1,  1,  0} C2 & Latex or vinyl gloves will be worn when handling chemicals or known allergens. & PPE: chemically resistant gloves & \cellcolor[rgb]{ .6,  .8,  0} C1 \\
+			\hline
+			
+			\pagebreak
+			\rowcolor[rgb]{ 1,  1,  1} \multicolumn{7}{|c|}{\textcolor[rgb]{ 0, 0, 0}{\textbf{Testing on the FRAME}}} \\
+			\hline
+			Personnel caught in motor belt & Belt plastic failure and/or improper placement in operation whilst operator is adjusting the FRAME & Potential for injury to operating personnel & \cellcolor[rgb]{ 1,  1,  0} E2 & Perform all belt operations while power is disconnected. Inspect belt before each use for damage. Stay clear of FRAME during testing operation. & FRAME was proven in by the 2016-2017 VADL Team; Following of testing procedure & \cellcolor[rgb]{ 1,  1,  0} C2 \\
+			\hline
+			Fall while securing nosecone interface & Unstable ladder base; unsafe practices & Potential for serious injury & \cellcolor[rgb]{ 1,  1,  0} D3 & Optimal positioning of step ladder; visual monitoring of ladder movement while in use. & Consultation of shop safety guidelines & \cellcolor[rgb]{ 1,  1,  0} E1 \\
+			\hline
+			Rocket dislodged & Improper axial constraint & Potential for serious injury & \cellcolor[rgb]{ 1,  1,  0} D3 & Ensure tight compression fit of top and bottom mounts; be ready to adapt setup to different vibrational situations. & FRAME was proven in by the 2016-2017 VADL Team; Following of testing procedure & \cellcolor[rgb]{ 1,  1,  0} E1 \\
+			\hline
+			Structural failure & Excessive vibration; joint failure & Potential for injury to operating personnel & \cellcolor[rgb]{ 1,  1,  0} D3 & Monitor construction; ensure proper joint tightness; maintain safe distance from test facility during tests. & FRAME was proven in by the 2016-2017 VADL Team; following of testing procedure to ensure structural stability of system prior to experiment deployment & \cellcolor[rgb]{ 1,  1,  0} C2 \\
+			\hline
+			
+			\pagebreak
+			\rowcolor[rgb]{ 1,  1,  1} \multicolumn{7}{|c|}{\textcolor[rgb]{ 0, 0, 0}{\textbf{Hotbox}}} \\
+			\hline
+			Electric shock & Improper shielding of control system & Potential for serious injury or death & \cellcolor[rgb]{ 1,  0,  0} E4 & {Follow electrical codes in wiring; maintain safe distance from hotbox while in use. Furthermore, the compartment containing high voltage electronics is marked with a warning sign and locked while the hotbox is in use.} & Consultation of safety guidelines for handling high voltage components & \cellcolor[rgb]{ .6,  .8,  0} C1 \\
+			\hline
+			Shop fire & Runaway heating & Potential for serious injury or death & \cellcolor[rgb]{ 1,  0,  0} E3 & PTC Thermistor used to cut off power to hotbox; webcam to monitor progress; digital thermometer included for redundancy in measurement; fire extinguishers kept in shop. & Hotbox design was proven in by the 2016-2017 VADL Team; Visual monitoring during use
+			& \cellcolor[rgb]{ .6,  .8,  0} D1 \\
+			\hline
+			Shop fire & Improper wiring or mounting of light bulbs & Potential for serious injury or death & \cellcolor[rgb]{ 1,  1,  0} E2 & High power circuitry completed with safety officer present; fire extinguishers kept in shop. & Hotbox design was proven in by the 2016-2017 VADL Team; Visual monitoring during use
+			& \cellcolor[rgb]{ .6,  .8,  0} D1 \\
+			\hline
+			Shop fire & Overheating of components & Potential for serious injury or death & \cellcolor[rgb]{ 1,  1,  0} E2 & Maximum temperature possible greater than temperature ratings of every part exposed to heat; fire extinguishers kept in shop. & Hotbox design was proven in by the 2016-2017 VADL Team; Visual monitoring during use; consultation of SDS for components to be heat-treated & \cellcolor[rgb]{ .6,  .8,  0} D1 \\
+			\hline
+			
+		\end{longtable}
+	\end{footnotesize}
+\end{document}

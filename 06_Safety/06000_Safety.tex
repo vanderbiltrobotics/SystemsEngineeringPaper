@@ -1,0 +1,105 @@
+%\documentclass{article}}
+%
+%\begin{document}
+\documentclass[class=article, crop=false]{standalone}
+\usepackage{00_Preamble/frr_preamble}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{graphics}
+\usepackage{adjustbox}
+\usepackage{placeins}
+
+\begin{document}
+	\section{Safety}
+%	Safety and Environment (Vehicle and Payload)
+%	Update the Personnel Hazard Anlysis, the Failure Modes and Effects Analysis, and the Environmental Hazard Analysis to include:
+%	Finalized hazard descriptions, causes, and effects for the rocket the team has built
+%	Note: These sections can change from CDR to FRR if there are design related changes made as a result of Sub-scale and Full-scale test flights, and refined modeling and analysis
+%	These should identify specifically the mechanisms for the hazards, and uniquely identify them from other hazards. Ambiguity is not useful in Safety work
+%	A completed list of mitigations, addressing the hazards and/or their causes
+%	A completed list of verifications for the identified mitigations. This should include methods od verifying the mitigations and controls are (or will be) in place, and how they will serve to ensure the mitigation
+%	Note: Be sure to discuss any concerns (especially operational, and environmental) that remain as the project moves into the operational phase of the life cycle.
+
+		\subsection{Overview}
+		\label{subsec:safety_overview}
+
+		The VADL team takes individual, group, and project safety very seriously. As such, a safety hierarchy (depicted in Figure \ref{fig:safety_protocol_flowsheet}) has been developed to ensure that all team operations in the lab and on the launch field are verified and monitored by informed and qualified personnel, and that operations are stopped should a risk become uncontrollable.		
+		\FloatBarrier
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=.95\linewidth]{09_Figures/safety_protocol_flowsheet.jpg}
+			\caption{Vanderbilt Aerospace Design Laboratory Safety Protocol}
+			\label{fig:safety_protocol_flowsheet}
+		\end{figure}
+		\FloatBarrier
+		
+		The top level contains a four-person Safety Administration and the Safety Documents. Robin Midgett (Safety Officer; NAR II), Taylor Parra (Student Safety Officer), Dexter Watkins (Assistant Safety Officer; NAR I) and Ben Gasser (Assistant Safety Officer; NAR II) are responsible for management of the safety materials and maintain the authority to make substantive changes to the protocols and safety documentation as needed. They are also vested with the power to make go and no-go decisions for the team when new processes or procedures are required.
+		\bigbreak
+	
+		In accordance with the Safety Hierarchy, all procedures will be performed by a Team Operating Unit (TOU). For the purposes of safety and accountability, a TOU will never consist of fewer than two individuals. All TOUs are informed by the Safety Administration and Safety Documents and are expected to pause prior to beginning any task to ask the questions outlined in Figure \ref{fig:safety_protocol_flowsheet}. 
+		\bigbreak
+		
+		This team structure offers a significant safety net while also encouraging safety to each individual. Operating under this safety hierarchy and in TOUs ensures that every team member plays a role in hazard recognition and accident avoidance, and ensures that hazards and risks are identified and addressed early, often, and repeatedly. In addition, the common objective of safety encourages team unity, creative thinking, and problem solving skills that will promote individual and team success throughout the Student Launch competition and in students' future careers. 
+	
+\bigbreak
+
+		\subsection{Safety and Environment: Hazard Analysis}
+		\label{subsec:hazard_analysis}
+		\subsubsection{Risk Assessment Matrix}
+		\label{subsec:risk_assessment_matrix}
+	
+	A risk assessment matrix (see Figure \ref{fig:risk_assessment_matrix}) is used to categorize and rank risks according to the likelihood of occurrence and severity of consequence, so that particularly dangerous risks may be identified. An event's likelihood of occurrence is assigned a rating of 1, 2, 3, 4, or 5, corresponding to the designation of rare, unlikely, moderate, probable, and very likely, respectively. Similarly, an event's severity of consequence is given a rating of A, B, C, D, or E, corresponding to the designation of trivial, minor, moderate, high, or critical, respectively. When these two scales are crossed in a matrix, the resulting combinations provide enlightening information in terms of the risk level. Low alphanumeric combinations represent typically negligible risk, while high alphanumeric combinations indicate much larger risks. Color-coding has also been included in the matrix to visually depict extent of risk. Events that fall within squares highlighted in green are considered low risk and require no mitigation or have no reasonable means of mitigation. In other words, "green" risks either occur infrequently or assume low consequence, such that serious consideration to mitigate the risk is not necessary. Similarly, squares highlighted in yellow contain events with moderate risk that should be mitigated, but the overall risk posed to the mission and general safety has been deemed acceptable. "Yellow" risks are more serious than "green" risks and could result in nontrivial consequences for the success of the mission or to the safety of those involved. However, this category of risk does not necessarily represent no-go situations once potential mitigation strategies have been evaluated and implemented. The third and most critical category is highlighted in red, signifying events that pose hazardous and unacceptable risks to either mission success or personal safety. Without exception, "red" risks must be mitigated to a "yellow" or "green" level before the rocket and payload are considered safe for launch.
+	
+		\FloatBarrier
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.9\linewidth]{09_Figures/risk_assessment_matrix.jpg}
+			\caption{Risk Assessment Matrix}
+			\label{fig:risk_assessment_matrix}
+		\end{figure}
+		\FloatBarrier
+		
+		\pagebreak
+		
+		The explicit meanings of each of the rating designations are outlined as follows:
+	
+		\bigbreak
+	
+		\textbf{Likelihood of Occurrence}
+		\begin{itemize}
+			\item 1 (Rare) - Probability of occurrence is almost non-existent. Mitigation need only exist for the most critical risks.
+			\item 2 (Unlikely) - Probability of occurrence is very low, but does exist. Mitigation should exist for high-risk consequences.
+			\item 3 (Moderate) - Probability of occurrence is moderate. Mitigation efforts should exist for all risks resulting in greater than minor consequence.
+			\item 4 (Probable) - Occurrence is more likely than not. Mitigation efforts should occur for all but the most trivial consequences.
+			\item 5 (Very Likely) - Occurrence is to be expected. Mitigation is required for all but the most trivial consequences.
+		\end{itemize}
+	
+		\textbf{Severity of Consequence}
+		
+		\begin{itemize}
+			\item A (Trivial) - Occurrence of risk results in no effect on rocket/payload performance or safety of all persons involved. No mitigation is needed.
+			\item B (Minor) - Occurrence of risk results in minor damage that is either easily reparable or has no effect on rocket/payload performance. No risk for injury to persons involved. Mitigation efforts should exist for the most likely risks.
+			\item C (Moderate) - Occurrence of risks results in some damage to rocket/payload that could negatively affect performance and/or result in minor injury to persons involved. Mitigation efforts should exist for most risks.
+			\item D (High) - Occurrence of risk results in major damage to rocket/payload that will negatively affect performance and/or result in serious injury to persons involved. Mitigation efforts should exist for all but the rarest risks.
+			\item E (Critical) - Occurrence of risk results in catastrophic damage to rocket/payload that will eliminate performance capability and/or result in serious injury/death to persons involved or bystanders. Mitigation is necessary.
+		\end{itemize}
+		
+		\textbf{Combined Rating}
+	
+		\begin{itemize}
+			\item Green (Low) - Risk falls within an acceptable range of probability and consequence. Mitigation strategies should be implemented if possible but are not mission critical.
+			\item Yellow (Moderate) - Risk may or may not be acceptable. Risk should be evaluated thoroughly for potential mitigation strategies.
+			\item Red (Critical) - Risk has an unacceptable level of likelihood and consequence. Mission should not proceed until viable mitigation strategies are created and implemented.
+		\end{itemize}
+		
+		All risks recognized by members of the team have been recorded and evaluated by the Student Safety Officer. The results are compiled in the following risk assessment tables, wherein each risk has been outlined along with possible causes, overall effect to the rocket/payload, verified mitigation strategy, and two risk assessment ratings for pre- and post-mitigation that have been colored accordingly for easy comparison. These ratings are abbreviated RR and PMRR, respectively. The evaluated risks, which span all aspects of project management, construction and launch day, have been organized into the following categories: Personnel, Propulsion Failure Modes, Payload Failure Modes, Recovery System Failure Modes, Vehicle Failure Modes, Environmental Concerns and Project Management.
+		\bigbreak
+	\input{06_Safety/06100_Personnel.tex}
+	\pagebreak
+	\input{06_Safety/06200_Propulsion.tex}
+	\pagebreak
+\end{document}
