@@ -9,6 +9,10 @@
 \usepackage{graphics}
 \usepackage{placeins}
 \usepackage{adjustbox}
+\usepackage{array}
+
+
+\renewcommand{\arraystretch}{1.4}
 % END HEADER
 
 \begin{document}
@@ -22,19 +26,27 @@ Two potential drive mechanisms were considered: a 4-wheel direct drive and tank 
 
 \FloatBarrier
 	\begin{table}[h]
+	\footnotesize
 	\centering
-	\begin{tabular}{ | m{8em} | m{5em} | m{5em} | m{5em} | m{5em} | m{5em} | } 
+	\begin{tabular}{ | p{8em} | m{4em} | m{6em} | m{3em} | m{8em} | m{3em} | }
  	\hline
  		\rowcolor[gray]{0.8}
- 		\textbf{Factor} &\textbf{Weight} &\textbf{4-Wheel Direct Drive} &\textbf{Score} &\textbf{Tank Tread Drive} &\textbf{Score}  \\ 
+ 		\textbf{Factor} &\textbf{Weight} &\textbf{Tank Tread Drive} &\textbf{Score} &\textbf{4-Wheel Direct Drive} &\textbf{Score}  \\ 
  		\hline
- 		Obstacle Avoidance&1&1&1&1&1 \\ 
+		Fabrication                       &  0.7  &  8    &  5.6  &  4    &  2.8   \\ 
  		\hline
- 		Power Requirements&1&1&1&1&1 \\ 
+ 		Obstacle \mbox{Avoidance}         &  0.9  &  7    &  6.3  &  9    &  8.1   \\ 
  		\hline
- 		Fabrication&1&1&1&1&1 \\ 
+ 		\mbox{Control System} Complexity  &  0.6  &  9    &  5.4  &  6    &  3.6   \\
  		\hline
- 		Control System Complexity&1&1&1&1&1 \\
+ 		Power \mbox{Efficiency}           &  0.4  &  5    &  2    &  9    &  3.6   \\ 
+ 		\hline
+ 		Obstacle \mbox{Traversal}         &  0.7  &  8    &  5.6  &  7    &  4.9   \\
+ 		\hline
+ 		\mbox{Reliability and} Simplicity &  0.6  &  4    &  2.4  &  9    &  5.4   \\
+ 		\hline
+ 		\rowcolor[gray]{0.9}
+ 		\textbf{Total}                    &       &       &\textbf{27.3}&       &\textbf{28.4}\\
  		\hline
 	\end{tabular}
 	\caption{Trade Study Matrix for Drive System }
