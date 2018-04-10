@@ -114,16 +114,7 @@ Experiments were conducted to test the effectiveness of elevating sand and grave
 	
 	
 	\subsubsection{Autonomy}
-	The autonomy module is responsible for localizing the robot and providing control commands to navigate the robot around the field. The following requirements were defined for the system:
-	\begin{itemize}
-	 \item The autonomy module shall be capable of localizing the robot from an unknown starting position
-	 \item The autonomy module shall be able to detect and avoid obstacles such as boulders and ditches
-	 \item The autonomy module shall be capable of navigating the robot back and forth from the starting zone to the mining zone
-	 \item The autonomy module shall communicate with the robot controller with standard control commands
-	 \item The autonomy module shall be able to detect failover to human control in case of an error mode
-	\end{itemize}
-	
-	Multiple sensor options for localization and obstacle avoidance were researched. 2D/3D LIDAR systems, cameras, Microsoft Kinect (Figure \ref{fig:kinect-pic}), telemetry sensors such as encoders, and inertial measurement units were all considered. These sensors were each evaluated based on performance parameters such as update rate, computational complexity, price, and noise.
+	The autonomy module is responsible for localizing the robot and providing control commands to navigate the robot around the field. Multiple sensor options for localization and obstacle avoidance were researched. 2D/3D LIDAR systems, cameras, Microsoft Kinect (Figure \ref{fig:kinect-pic}), telemetry sensors such as encoders, and inertial measurement units were all considered. These sensors were each evaluated based on performance parameters such as update rate, computational complexity, price, and noise.
 	
 	LIDAR based systems were considered due to their widespread use in mapping and localization tasks such as self-driving cars. LIDAR produces high-resolution depth maps of the environment and function  well in environments with limited visibility. However, many 3D LIDAR sensors, which produce a three dimensional scan of the environment, are cost-prohibitive and are not feasible within the team’s budget. While some 2D LIDAR systems fall within the budget,they only produce a planar scan of the environment. Since the obstacles on the field are low to the ground, it would be difficult to find a suitable place to mount the LIDAR system on the robot. 
 	
