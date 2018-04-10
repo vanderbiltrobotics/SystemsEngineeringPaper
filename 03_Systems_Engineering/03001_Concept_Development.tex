@@ -37,13 +37,15 @@ Optimizing gravel collection was the highest priority. The rover must excavate g
  		\hline
  		The robot shall weigh no more than 80 kg. \\ 
  		\hline
- 		The robot shall report the amount of energy it has consumed since its power-on. \\
+ 		The robot must report the amount of energy it has consumed since its power-on. \\
  		\hline
  		\textbf{Performance} \\ 
  		\hline
- 		The robot shall be capable of collecting and depositing a minimum of 1 kg of icy simulant within 10 minutes. \\
+ 		The robot must be able to capable of collecting and depositing a minimum of 1 kg of icy simulant within 10 minutes. \\
  		\hline
  		The robot shall be designed to minimize dust kickup and have a dust tolerant design.  \\
+ 		\hline
+ 		The robot shall be able to function fully autonomously and failover to human control in the case of an error. \\
  		\hline
  		\textbf{Budget} \\
  		\hline
@@ -70,8 +72,6 @@ Optimizing gravel collection was the highest priority. The rover must excavate g
  		\hline
  		The robot must be able to capable of collecting and depositing a minimum of 10 kg of icy simulant within 10 minutes. \\
  		\hline
- 		The robot shall be able to function fully autonomously and failover to human control in the case of an error. \\
- 		\hline
  		\textbf{Budget} \\
  		\hline
 		The project cost for development of the robot shall cost no more than \$8000. \\
@@ -85,8 +85,7 @@ Optimizing gravel collection was the highest priority. The rover must excavate g
 	\FloatBarrier
 	
 	\subsubsection{System Hierarchy}
-	 The robot was divided into 6 separate subsystems as shown in Figure \ref{fig:system_hierarchy}. Each subsystem is comprised of mechanical hardware, electrical components, and software to achieve its functionality. The frame consists of the structural base of the robot, drive train, and the power distribution systems. The excavation system includes all components designed to mine the icy regolith simulant and BP-1. The depositing system must be capable of filtering and storing excavated gravel and depositing it into the collector bin. The robot controller system includes all of the hardware and software to handle all input and output to the sensors and actuators on the robot. Additionally, it includes a state machine to make high level decisions about processes running on the robot. The autonomy module integrates all of the sensor data for localizing the robot, mapping the environment, and path planning. Based on the collected data and autonomy algorithms, the module sends control commands to the robot controller. The teleoperation module provides the human robot drivers with control inputs and data readouts. The teleoperation module uses the same interface as the autonomy module to provide control inputs to the robot.
-
+	The system hierarchy is depicted in Figure \ref{fig:system_hierarchy}. The frame consists of the structural base of the robot, drive system, and the power distribution systems. The drivetrain was designed for direct drive. Without a suspension system, it was important to be able to control each wheel independently to maneuver obstacles and improve turning capabilities. The excavation system must dig through BP-1 and collect gravel. It was considered making these two independent processes so to not collect BP-1.  The collected gravel The robot controller software handles all input and output for the robot and maintains a state machine for higher-level control of the robot. The autonomy module includes all of the sensors for localizing the robot and mapping the environment. Additionally, all of the software associated with localization, mapping, and path planning are included in the autonomy module. The teleoperation module provides the human robot drivers with control inputs and data readouts. The autonomy module and driver station interface with the robot controller identically.
 	
 	\FloatBarrier
 		\begin{figure}[h]
@@ -98,7 +97,7 @@ Optimizing gravel collection was the highest priority. The rover must excavate g
 		\FloatBarrier
 		
 	\subsubsection{Concept of Operations}
-	The concept of operations are described in Table \ref{table:con_ops} below. These are derived from the system requirements and key design considerations listed in Section 2.1.2.
+	The concept of operations are described in Table \ref{table:con_ops} below. The order of operations was derived from the system requirements and key design considerations listed in Section 2.1.2.
 	
 	%Concept of Operations Table
 	\FloatBarrier
@@ -121,12 +120,6 @@ Optimizing gravel collection was the highest priority. The rover must excavate g
  		\hline\hline
  		\textbf{Excavation}           &
 		                                Mine gravel until section is depleted or storage limit is reached \\
-		\hline
-									 &
-									 	Navigate to the starting zone and deposit gravel in collector bin \\
-		\hline
-									 &
-									 	Repeat mining and depositing process until time limit is reached \\
  		\hline\hline
  		\textbf{Post-Competition Run} &
  		                                Record power consumption and turn off the robot \\
