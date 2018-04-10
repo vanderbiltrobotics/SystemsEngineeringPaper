@@ -65,4 +65,33 @@
 	\end{table}
 	\FloatBarrier
 	
+	\subsubsection{Interface Management}
+	When designing each subsystem on the robot, interfaces between the subsystems were clearly defined in order to ensure that the system integration process occurs without errors. Well-defined interfaces also improve the ability to swap in new parts in the case of failures.
+	
+	\textbf{Frame Interfaces}
+	
+	The frame was designed to be modular and easy to assemble. Due to tolerances in custom fabricated parts, it was important to leave room for error in the assembly process. The base frame consists of aluminum extrusions connected together by mounting plates and T-nuts. The T-nuts allow the connection points to be adjusted continuously along the aluminum extrusions as needed. The motor mounts that attach the wheels to the frame are also connected with T-nuts. This allows the wheel’s position to be modified along the length of the frame so that the wheel spacing can be optimized for the best turning radius during the testing phase. The vertical conveyor supports on the frame are connected by brackets so that the conveyor angle and length can be adjusted to reach the team-defined requirement of depositing gravel 3 inches above the collection bin. The linear actuators are attached to the frame by adjustable brackets that allow the final auger digging angle to be modified. 
+	
+		
+	
+	
+	\textbf{Software Interfaces}
+	
+		A diagram for the software interfaces generated in ROSMOD is shown in Figure XX. Each green circle in the diagram represents a message that serves as the interface between the various nodes (the white circles). Messages define how different components of the controller communicate with each other. The robot controller connects the autonomy controller and tele-operator controller to the sensors and motor controllers across the robot. Data from each sensor is published on a unique message and subscribed to by other components. 
+		
+Components subscribe to individual messages, making them agnostic to the component sending the messages. Therefore, each sub-system can abstract control of its individual motors and sensors to provide one interface for controlling. This abstraction allows control schemes where subsystems like the drive have only a generalized interface for accepting speed commands, which can be sent by either the autonomy controller or operator input. In addition to providing the ability for multiple control inputs, the generalized interface also allows for easy debugging and data collection as you can easily use ROS tools to observe all messages being sent to verify functionality.
+
+		\FloatBarrier
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{09_Figures/programming_interfaces.png}
+			\caption{Robot System Hierarchy}
+			\label{fig:system_hierarchy}
+		\end{figure}
+		\FloatBarrier
+
+
+
+	
+	
 \end{document}
