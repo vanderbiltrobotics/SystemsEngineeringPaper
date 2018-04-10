@@ -84,7 +84,7 @@
 		\centering
 		\includegraphics[width=1\linewidth]{09_Figures/programming_interfaces.png}
 		\caption{ROSMOD Software Interface Diagram}
-		\label{fig:system_hierarchy}
+		\label{fig:software_interfaces}
 	\end{wrapfigure}
 	\FloatBarrier
 	
@@ -95,7 +95,7 @@
 	\vspace*{0.1in}
 	\noindent\textbf{\underline{Software Interfaces}}
 	
-	A diagram for the software interfaces generated in ROSMOD is shown in Figure \ref{fig:system_hierarchy}. Each green circle in the diagram represents a message that serves as the interface between the various nodes (the white circles). Messages define how different components of the controller communicate with each other. The robot controller connects the autonomy controller and tele-operator controller to the sensors and motor controllers across the robot. Data from each sensor is published on a unique message and subscribed to by other components. 
+	A diagram for the software interfaces generated in ROSMOD is shown in Figure \ref{fig:software_interfaces}. Each green circle in the diagram represents a message that serves as the interface between the various nodes (the white circles). Messages define how different components of the controller communicate with each other. The robot controller connects the autonomy controller and tele-operator controller to the sensors and motor controllers across the robot. Data from each sensor is published on a unique message and subscribed to by other components. 
 	
 	Components subscribe to individual messages, making them agnostic to the component sending the messages. Therefore, each sub-system can abstract control of its individual motors and sensors to provide one interface for controlling. This abstraction allows control schemes where subsystems like the drive have only a generalized interface for accepting speed commands, which can be sent by either the autonomy controller or operator input. In addition to providing the ability for multiple control inputs, the generalized interface also allows for easy debugging and data collection as you can easily use ROS tools to observe all messages being sent to verify functionality.
 		
