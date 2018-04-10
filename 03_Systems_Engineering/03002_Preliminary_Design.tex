@@ -68,7 +68,7 @@ Two potential drive mechanisms were considered: a 4-wheel direct drive and tank 
 
 	\subsubsection{Excavation}
 	The driving requirement for the excavation system was to dig through the 30 cm of BP-1 and collect the gravel underneath. The primary design considerations for the digging mechanism were reliability, dust tolerance, complexity, and weight. 
-Research was performed on existing digging mechanisms in the mining industry. Refer to Figure X for a trade study of the designs. The backhoe and bucket wheel excavator were eliminated from the solution space as they are primarily effective for surface mining.  The bucket wheel excavator is capable of removing a large amount of material, but it does not fit within the size constraints of the robot., but its large size would make it hard to fit within the size constraints. 
+Research was performed on existing digging mechanisms in the mining industry. Refer to Table \ref{table:dig-trade-study} for a trade study of the designs. The backhoe and bucket wheel excavator were eliminated from the solution space as they are primarily effective for surface mining.  The bucket wheel excavator is capable of removing a large amount of material, but it does not fit within the size constraints of the robot., but its large size would make it hard to fit within the size constraints. 
 
 The chain trencher would be able to excavate significantly more gravel than an auger. However, the power requirements are immense, which is why chain trenchers are always gasoline-powered. After consulting with engineers at Ditch Witch, it was determined that a chain trencher of the correct scale for the RMC would require at least 4 HP to run. This power requirement was not worth the increased gravel collection. 
 The auger was the team’s chosen digging mechanism. It provided a compromise between weight, power consumption, and the mass of gravel collected. The biggest concern was whether the auger would be able to excavate large gravel particles, as augers are generally used for liquids and fine particulate. The team ran experiments to test the auger’s ability to dig through sand and gravel with a tube covering that funnels up gravel. The tube covering was successful in allowing material to be conveyed up the blade. Refer to Appendix A for data from the experiment.
@@ -102,7 +102,73 @@ The auger was the team’s chosen digging mechanism. It provided a compromise be
 	\FloatBarrier
 	
 	
+	\subsubsection{Depositing}
+	Excavating the icy regolith with an auger requires additional systems to sort, hold, and deposit the collected material.  Since the auger needs to be on either the front or back end of our robot, placing our depositing system on the opposite side removes the need to rotate the robot after leaving the excavating zone.  This is replaced however, with the new requirement of transporting all collected material from one side of the robot to the other.  Our original, and most abstract design, was a sieve, over a collection bin, which emptied into a conveyor.  This three part system was combined into one conveyor, featuring a volume capacity to hold our predicted maximum of gravel, the ability to quickly deposit into the collector bin, and a plastic mesh as the conveyor belt allows the BP-1 to be sorted without need for an additional mechanism.  This combination of mechanisms allowed for great simplifications and fewer possible points of failure. 
 	
+	
+	\subsubsection{Autonomy}
+	The autonomy module is responsible for localizing the robot and providing control commands to navigate the robot around the field. The following requirements were defined for the system:
+	\begin{itemize}
+	 \item The autonomy module shall be capable of localizing the robot from an unknown starting position
+	 \item The autonomy module shall be able to detect and avoid obstacles such as boulders and ditches
+	 \item The autonomy module shall be capable of navigating the robot back and forth from the starting zone to the mining zone
+	 \item The autonomy module shall communicate with the robot controller with standard control commands
+	 \item The autonomy module shall be able to detect failover to human control in case of an error mode
+	\end{itemize}
+	
+	Multiple sensor options for localization and obstacle avoidance were researched. 2D/3D LIDAR systems, cameras, Microsoft Kinect (Figure \ref{fig:kinect-pic}), telemetry sensors such as encoders, and inertial measurement units were all considered. These sensors were each evaluated based on performance parameters such as update rate, computational complexity, price, and noise.
+	
+	LIDAR based systems were considered due to their widespread use in mapping and localization tasks such as self-driving cars. LIDAR produces high-resolution depth maps of the environment and function  well in environments with limited visibility. However, many 3D LIDAR sensors, which produce a three dimensional scan of the environment, are cost-prohibitive and are not feasible within the team’s budget. While some 2D LIDAR systems fall within the budget,they only produce a planar scan of the environment. Since the obstacles on the field are low to the ground, it would be difficult to find a suitable place to mount the LIDAR system on the robot. 
+	
+	\begin{wrapfigure}{l}{0.5\textwidth}
+	\centering
+	 \includegraphics[width=0.48\textwidth]{09_Figures/xbox-360-kinect.png}
+	 \caption{The XBox Kinect, V1}
+	 \label{fig:kinect-pic}
+	\end{wrapfigure}
+	
+	In order to localize the robot using a camera system, fiducial markers are often placed at a predefined location to serve as a landmark. The robot then determines its pose using a coordinate transformation. The OpenCV library has pre-built functions for determining robot pose by detecting AruCo markers, which are binary square fiducial markers. This method of localization is advantageous because the time required to implement is relatively low compared to other options. However, since the camera is operating in the visual light spectrum, it may be prone to error measurement due to dust kickup. Additionally, ranging with a single camera may not be as accurate because it relies solely on the relative image size instead of time of flight measurements or stereoscopy.
+	
+	The Microsoft Kinect is a robust, low-cost, 3-dimensional vision system. The Microsoft Kinect outperforms LiDAR systems in dusty conditions due to its use of structured light three dimensional scanning.~\footnote{C. Hall, "Comparing the Performance Of Structured Light Depth Sensors and Traditional Time-of-flight Depth Sensors For Use in a Lunar Mining Environment", Master's, University of Alabama, 2014.} The kinect has an extensive amount of libraries for collecting and utilizing data for depth mapping and feature detection that could be adapted to match the autonomy module requirements. 
+	
+	An Inertial measurement unit (IMU) measures acceleration and angular velocity at a high refresh rate. However, since double integration is required to estimate position, the error accumulation rate makes the data unreliable. Instead, an IMU can be used in combination with encoder telemetry data on the drive motors to correct wheel slippage error. By comparing the acceleration and angular velocity measurements from the encoder to the expected values based the IMU data, erroneous data can be eliminated and the wheel velocities can be adjusted to correct for slippage
+	
+	Based on research conducted for each sensor system, it was determined that the best suited option for the robot would be a combination of a Microsoft Kinect, a camera for AruCo marker tracking, an inertial measurement unit, and encoders for telemetry data. The camera, encoders, and IMU will be used to localize the robot while the Kinect will  be used to track obstacles on the field.
+	
+	\subsubsection{Robot Controller}
+	
+	The robot controller is responsible for interpreting sensor inputs, controlling motors, and making autonomous decisions. Each of these tasks have  different hardware requirements. Sensor interpretation and motor control require a variety of IO protocols and real-time operation, whereas autonomy requires high computational power and the ability to parallelize operations (see Figure \ref{fig:data-control}). Each of these systems must also maintain low profiles to fit in a restricted space and must minimize power consumption. Multiple low-powered computers were considered:
+	\begin{itemize}
+	 \item Raspberry Pi provides a high level of community support and computational power, but remains limited by its IO, lack of real-time operation, and ARM architecture.
+	 \item Arduinos provide a large amount of IO but provide very little computational power and difficulty interfacing with Linux based controllers.
+	 \item BeagleBone Black provides similar IO to an Arduino with Linux support but lacks computational power.
+	 \item BeagleBone Blue has the most IO ports and interfaces of the considered controllers. Its layout is designed for robotics applications and for interfacing with common sensors and actuators. 
+	 \item The UP Board provides the best computational power whie maintaining the form factor of the Raspberry Pi, but draws substantially more power and retains the Pi’s limited IO.
+	\end{itemize}
+	
+	The BeagleBone Blue was selected to meet the high level of connectivity required on the robot and the UP Board was selected to provide the computational power required by the autonomy module.
+	
+	The robot controller software must support a high level of performance, interface with open-source robotics software, and run across multiple connected controllers. However, it also must be simple enough to minimize the training time required for novice team members to begin contributing to software development.
+	
+	Based on these criteria, ROS (Robot Operating System) was identified as the primary software platform for the robot controller. It provides access to an extensive collection of pre-written robot libraries, greatly reducing the amount of code that needs to be written. In addition, ROS provides a network layer for running applications across a network of devices, supporting the requirement of easy communication between devices on the controller’s distributed system. 
+	
+	ROSMOD, an application developed by the Institute for Software Integrated Systems at Vanderbilt, allows for the development of distributed ROS applications in a graphical user interface. It simplifies code development by abstracting the hardware from the software. All software is ready to run on any device connected to it which meets the software requirements. ROSMOD helps to reduce the large amount of knowledge and boilerplate code required to properly implement distributed systems in ROS. The final decision was made to use ROSMOD to gain the full advantages of the ROS library with an easy way to develop and deploy code.
+
+	\FloatBarrier
+	\begin{figure}[h]
+	\centering
+	 \includegraphics[width=0.8\linewidth]{09_Figures/data-control-high-level.jpg}
+	 \caption{Robot Controller flow diagram}
+	 \label{fig:data-control}
+	\end{figure}
+	\FloatBarrier
+	
+	
+	
+	\subsection{Preliminary Design Review}
+	
+	On January 10th, the executive team members met with the team’s faculty advisor to review the proposed preliminary designs. The preliminary design of each subsystem was verified to satisfy the design requirements. The team was cleared to move on the final design stage. 
+
 	
 	
 
