@@ -6,12 +6,6 @@ before_install:
 - docker pull blang/latex:ubuntu
 script:
 - docker run --rm --user="$(id -u):$(id -g)" --net=none -v "$PWD":/data blang/latex:ubuntu pdflatex -interaction=nonstopmode -halt-on-error 2017-2018\ SE\ Paper.tex
-before_deploy:
-- git config --global user.email "builds@travis-ci.com"
-- git config --global user.name "Travis CI"
-- export GIT_TAG=$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER
-- git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-- git push -q https://jeholliday:$CIoluqTLYQg@github.com/vanderbiltrobotics/SystemsEngineeringPaper --tags
 deploy:
   skip_cleanup: true
   provider: releases
@@ -20,8 +14,4 @@ deploy:
   file:
   - 2017-2018\ SE\ Paper.pdf
   on:
-    tags: false
-    all_branches: true
-env:
-  global:
-    secure: q6/X/7P2Th12wM5j9TCTdFTGgdOEG8/yhRUzQxYCgum3+MY/gMeVC3dl/+f3cmnui1ljs0ZLz/+tZzAsa8Ozc3jBJU+RQugwGgtgrh2XiNOBPqtzgAWHJRrSffgPHJ7aJDb7a0ZLa67OfHWsGnUTqqLSOTuA/sqQNykp9oCI1RHRflBCqCDymV2hAQGVGvL4ynViPO6ARWy6/sMYeZcsvxtBBThO++A2xiR/95iBiaKAGA9LntFNyAm3R8DDaZmIWK42uoY5A+VoOiMRWY8j9UQP6GO6tYp7Uwb8heSB1BdymmD89izGWagAraOjmZzY2xiWvuws/TqcxhFfzqwyu8O24bH3tgdMmhuQBGolpr3eAazH3W0NNsIhjsADZN53Qhk1/wfb0dhnO05l39hZgs6LhfJBBqy2b73fsf4sp+aGTUuUqw6m7uByyD2OKcqp+3iWWuQjOzLSLhTXNGZHuox1cUSmjk6c/7wgqjpBZEg7CBQzrDN9u89u2ZRlwc0+46gQtLym5HP5yKsGtEWAjj+T426ByPM9QmVuhuvuWqcGh5VbIZxCHqFWDF9uR9Zlinv+r+aIKfwMtsHbsyqebIIOwOwiXDUrPogVlTu8l9/K167L4aNeNUZ0C9qG+uyy1E5jWtPplnsW+O3utvXeigE/pxzM3Ti/CIoluqTLYQg=
+    tags: true
